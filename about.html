@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background-color: aliceblue;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+        }
+
+        nav {
+            width: 100%;
+            background-color: rgba(68, 89, 113, 0.8);
+            padding: 10px 20px;
+            position: relative;
+        }
+        
+        .button-link {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-top: 5px;
+            background-color: #304f70; 
+            color: white; 
+            text-decoration: none; 
+            border-radius: 5px; 
+            transition: background-color 0.3s ease; 
+        }
+
+        .button-link:hover {
+            background-color: #0056b3; 
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            justify-content: flex-end;
+            gap: 20px;
+        }
+
+        .nav-links li a {
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.8s ease;
+        }
+
+        .nav-links li a:hover {
+            background-color: #2d3f52;
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            background: transparent;
+            border: none;
+            font-size: 30px;
+            color: #fff;
+            position: absolute;
+            top: 10px;
+            right: 20px;
+        }
+
+        .close {
+            display: none;
+            cursor: pointer;
+            background: transparent;
+            border: none;
+            font-size: 30px;
+            color: #fff;
+            position: absolute;
+            top: 10px;
+            right: 20px;
+        }
+
+        .nav-menu {
+            display: flex;
+        }
+
+        .nav-menu.show {
+            display: block;
+        }
+
+        .nav-menu.hidden {
+            display: none;
+        }
+
+        .container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            padding: 40px 20px;
+
+            border-radius: 10px;
+            margin: 20px auto;
+            max-width: 1200px;
+        }
+
+        .home-section {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 40px;
+        }
+
+        .home-image img {
+            width: 100%;
+            max-width: 250px;
+            height: auto;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 20px;
+        }
+
+        .home-text-box {
+            max-width: 900px;
+            flex: 1;
+        }
+        .social_media {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+
+        }
+
+        h1 {
+            font-size: 2rem;
+            color: black;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            color: cornflowerblue;
+            margin-bottom: 10px;
+            margin-left: 0;
+        }
+
+        p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: black;
+            margin-left: 30px;
+            margin-bottom: 20px;
+        }
+
+        ol li {
+            font-size: 1.1rem;
+            color: black;
+            margin-bottom: 10px;
+            margin-left: 35px;
+        }
+        h3{
+            font-size: 1.5rem;
+            color: cornflowerblue;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        h4 {
+            margin-left: 0px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: cornflowerblue;
+        }
+
+        .view-cv-button {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-top: 10px;
+            background-color: cornflowerblue;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .view-cv-button:hover {
+            background-color: #0056b3;
+        }
+
+        form {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        
+        }
+
+        form input, form textarea {
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 1rem;
+        }
+
+        form button {
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: cornflowerblue;
+            color: #fff;
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+
+        form button:hover {
+            background-color: #0056b3;
+        }
+
+
+        footer {
+            width: 100%;
+            margin-top: 10px;
+            background-color: cornflowerblue;
+            padding: 20px;
+            text-align: center;
+            color: #fff;
+            font-size: 1rem;
+        }
+
+        /* Media query for responsive behavior */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                right: 20px;
+                background-color: rgba(0, 123, 255, 0.8);
+                border-radius: 5px;
+                width: 200px;
+            }
+
+            .nav-links.show {
+                display: flex;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .close {
+                display: block;
+            }
+
+            .home-section {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .home-image img {
+                margin: 0 0 20px 0;
+            }
+
+            .home-text-box {
+                max-width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            p {
+                font-size: 1rem;
+            }
+
+            .view-cv-button {
+                padding: 8px 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="my_CV.html" class="button-link">THE LINK TO MY CV</a>
+        <button class="hamburger" onclick="toggleNav()">☰</button>
+        <button class="close" onclick="toggleNav()">×</button>
+        <ul class="nav-links hidden">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <div id="home" class="home-section">
+            <div class="home-image">
+                <img src="images/IMG-20240807-WA0340.jpg" alt="Alice Mandalasi" />
+            </div>
+            <div class="home-text-box">
+                <h1>Hi, I'm Alice Mandalasi</h1>
+                <p>I’m a web developer and graphic designer based in Malawi. I specialize in creating visually appealing static websites.Want to collaborate on a web design project, need help with graphics, or just want to chat about tech? Feel free to browse my portfolio, check out my CV, or reach out through the contact page. I’m always open to new opportunities!</p>
+
+                <div class="social-media">
+                    <h4>Social Media Links</h4>
+                    <p>You can connect with me on: <br>
+                    <a href="https://web.facebook.com/alicec.mandalasi/" target="_blank">
+                        <img src="images/icons8-facebook-30.png" alt="Facebook" style="width:30px; height:30px;">
+                    </a>
+                    <a href="https://www.linkedin.com/feed/" target="_blank">
+                        <img src="images/icons8-linkedin-48.png" alt="LinkedIn" style="width:30px; height:30px;">
+                    </a></p>
+                </div>
+            </div>
+        </div>
+
+        <div id="about" class="about-section">
+            <h2>About Me</h2>
+            <p>Originally from Dowa, Traditional Authority Kayembe, Nyongani Village, I was born into a family of six and am the third-born daughter of Mr. and Mrs. Mandalasi. I am currently a student at the Malawi University of Business and Applied Sciences, pursuing a Bachelor’s degree in Information Technology in my final year and final semester. My journey in tech began with an interest in both hardware and software, and now I combine these skills to deliver innovative solutions.</p>
+        </div>
+        <div id="skills">
+            <h2>Skills and Expertise</h2>
+            <ol>
+                <li>Web Design & Development: I specialize in front-end development, creating clean and responsive static websites using HTML, CSS, and JavaScript.</li>
+                <li>Graphics Design: Basics.</li>
+                <li>Database Management: Experience with MySQL and MS Access, managing and organizing databases efficiently.</li>
+                <li>Networking: Completed training following the Cisco Networking Academy syllabus, giving me a solid foundation in networking principles.</li>
+                <li>Microsoft Office: Proficient in Office tools for business and academic work.</li>
+                <li>Computer Repair: Skilled in diagnosing and fixing hardware and software issues.</li>
+                <li>Electronics: Practical experience with electronics kits and projects from teaching sessions.</li>
+            </ol>
+            <h4>My Passion and Values</h4>
+            <p>I’m passionate about creating visually appealing and highly functional websites. My goal is to ensure that every project I work on brings value to users, whether through web design, software, or visual branding. I also love the problem-solving aspect of technology, whether it’s fixing a computer, setting up a network, or designing a system from scratch.</p>
+
+            <h4>Personal Life and Interests</h4>
+            <p>Outside of my tech work, I have a strong interest in graphic design and hairstyling. I also enjoy teaching kids about electronics, which I’ve done during my internship. I believe in learning by doing, and I find great joy in both creating and sharing knowledge.</p>
+
+            <h4>Achievements</h4>
+            <p>During my studies, I developed several projects including a library management system and a file organizer. I’ve also completed the Cisco Networking Academy syllabus and developed a strong foundation in networking.</p>
+        </div>
+
+
+        </div>
+
+        <div id="contact">
+            <h3>Contact Me</h3>
+            <form action="mailto:alicemandalasi@gmail.com" method="post" enctype="text/plain">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" rows="4" required></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+
+    </div>
+    
+    
+    <footer>
+        <p>&copy; 2024 Alice Mandalasi. All rights reserved.</p>
+        
+    </footer>
+    
+
+    <script>
+        function toggleNav() {
+            const navLinks = document.querySelector('.nav-links');
+            const hamburger = document.querySelector('.hamburger');
+            const close = document.querySelector('.close');
+
+            if (navLinks.classList.contains('hidden')) {
+                navLinks.classList.remove('hidden');
+                navLinks.classList.add('show');
+                hamburger.style.display = 'none'; // Hide hamburger
+                close.style.display = 'block'; // Show close
+            } else {
+                navLinks.classList.remove('show');
+                navLinks.classList.add('hidden');
+                hamburger.style.display = 'block'; // Show hamburger
+                close.style.display = 'none'; // Hide close
+            }
+        }
+
+        // Add a resize event listener to handle showing/hiding icons when resizing the window
+        window.addEventListener('resize', function() {
+            const width = window.innerWidth;
+            const navLinks = document.querySelector('.nav-links');
+            const hamburger = document.querySelector('.hamburger');
+            const close = document.querySelector('.close');
+
+            // If the window width is greater than 768px, hide both hamburger and close icons
+            if (width > 768) {
+                hamburger.style.display = 'none';
+                close.style.display = 'none';
+                navLinks.classList.remove('hidden');
+                navLinks.classList.remove('show'); // Ensure the list is visible on large screens
+            } else {
+                // On smaller screens, hide the list and show the hamburger icon
+                navLinks.classList.add('hidden');
+                hamburger.style.display = 'block';
+                close.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
+
+
